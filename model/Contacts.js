@@ -23,7 +23,7 @@ const contactsSchema = new Schema(
 
 contactsSchema.post("save", handleSaveError);
 contactsSchema.pre("findOneAndUpdate", preUpdate);
-contactsSchema.pre("findOneAndUpdate", handleSaveError);
+contactsSchema.post("findOneAndUpdate", handleSaveError);
 
 const Contacts = model("contact", contactsSchema);
 export default Contacts;
