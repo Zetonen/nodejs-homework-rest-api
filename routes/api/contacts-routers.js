@@ -3,11 +3,17 @@ import contactsControllers from "../../controllers/contacts-controllers.js";
 import {
   contactsAddSchema,
   contactsUpdateSchema,
-  contactsFavoriteSchema
+  contactsFavoriteSchema,
 } from "../../schema/contacts-schema.js";
-import { isEmptyBody,isValidId } from "../../middlewares/index.js";
+import {
+  authenticate,
+  isEmptyBody,
+  isValidId,
+} from "../../middlewares/index.js";
 import { validaterBody } from "../../decorators/index.js";
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get("/", contactsControllers.getAll);
 
