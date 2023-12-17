@@ -1,7 +1,8 @@
+import gravatar from "gravatar";
 import User from "../../model/User.js";
 import bcrypt from "bcryptjs";
 import "dotenv/config.js";
-import {HttpError} from "../../helpers/index.js";
+import { HttpError } from "../../helpers/index.js";
 
 const signup = async (req, res) => {
   const { email, password } = req.body;
@@ -10,7 +11,13 @@ const signup = async (req, res) => {
     throw HttpError(409, "Email in use");
   }
   const hashPassword = await bcrypt.hash(password, 10);
-  const newUser = await User.create({ ...req.body, password: hashPassword });
+  const avatarURL = gravatar.url(email);
+  const newUser = await User.create({
+    ...req.body,
+    password: hashPassword,
+    avatarURL,
+  });
+  console.log(newUser);
 
   res.status(201).json({
     email: newUser.email,

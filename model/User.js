@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import { emailRegexp, subscriptionValues } from "../schema/user-schema.js";
 
-
 const userSchema = new Schema(
   {
     password: {
@@ -20,6 +19,9 @@ const userSchema = new Schema(
       default: "starter",
     },
     token: { type: String },
+    avatarURL: {
+      type: String,
+    },
   },
   { versionKey: false }
 );
