@@ -6,4 +6,5 @@ export default {
   signin: ctrlWrapper(usersService.signin),
   logout: ctrlWrapper(usersService.logout),
   getCurrent: ctrlWrapper(usersService.getCurrent),
+  updateAvatar: ctrlWrapper(usersService.updateAvatar),
 };
