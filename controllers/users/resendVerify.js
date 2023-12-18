@@ -1,4 +1,4 @@
-import { sendEmail } from "../../helpers/index.js";
+import { HttpError, sendEmail } from "../../helpers/index.js";
 import User from "../../model/User.js";
 
 const { BASE_URL } = process.env;
