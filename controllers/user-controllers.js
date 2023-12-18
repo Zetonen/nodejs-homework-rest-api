@@ -7,4 +7,6 @@ export default {
   logout: ctrlWrapper(usersService.logout),
   getCurrent: ctrlWrapper(usersService.getCurrent),
   updateAvatar: ctrlWrapper(usersService.updateAvatar),
+  verify: ctrlWrapper(usersService.verify),
+  resendVerify: ctrlWrapper(usersService.resendVerify),
 };

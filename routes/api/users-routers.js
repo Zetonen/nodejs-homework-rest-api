@@ -5,6 +5,7 @@ import {
   userAvatarsSchema,
   userSigninSchema,
   userSignupSchema,
+  verificationSchema,
 } from "../../schema/user-schema.js";
 import { isEmptyBody, authenticate, upload } from "../../middlewares/index.js";
 
@@ -34,6 +35,15 @@ usersRouter.patch(
   upload.single("avatar"),
   validaterBody(userAvatarsSchema),
   usersController.updateAvatar
+);
+
+usersRouter.get("/verify/:verificationToken", usersController.verify);
+
+usersRouter.post(
+  "/verify",
+  isEmptyBody,
+  validaterBody(verificationSchema),
+  usersController.resendVerify
 );
 
 export default usersRouter;

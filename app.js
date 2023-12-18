@@ -19,11 +19,11 @@ app.use("/users", usersRouter);
 app.use("/api/contacts", contactsRouter);
 
 app.use((req, res) => {
-  console.log(req);
   res.status(404).json({ message: "Not found" });
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({
     message,
